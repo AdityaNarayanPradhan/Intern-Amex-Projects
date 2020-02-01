@@ -1,0 +1,23 @@
+from bs4 import BeautifulSoup
+try:
+    import urllib.request as urllib2
+except ImportError:
+    import urllib2
+import re
+
+html_page = urllib2.urlopen("https://www.americanexpress.com/in/credit-cards/")
+#html_page = urllib2.urlopen("https://www.online-calculator.com/")
+soup = BeautifulSoup(html_page)
+for i in soup.findAll('div'):
+ i['contenteditable']='true'
+#print(soup.find('style',{"type" : "text/css"}))
+print(soup)
+with open("output3.html", "w") as file:
+    file.write(str(soup))
+#print(soup)
+#images = []
+#for img in soup.findAll(''):
+ # ans=img.get('src')
+  #print(ans)
+
+#print(images)
